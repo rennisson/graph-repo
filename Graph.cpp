@@ -35,8 +35,8 @@ void Graph::addEdge(int v, int w) {
 
 void Graph::setV(int v) { this->V = v; }
 void Graph::setE(int e) { this->E = e; }
-int Graph::totalV() { return V; }
-int Graph::totalE() { return E; }
+int Graph::vertices() { return V; }
+int Graph::edges() { return E; }
 
 void Graph::print()
     {
@@ -52,14 +52,14 @@ void Graph::print()
         }
     }
 
-int main() {
-    string filename = "tinyG.txt";
-    Graph graph(filename);
+// int main() {
+//     string filename = "tinyCG.txt";
+//     Graph graph(filename);
 
-    cout << "Number of vertices: " << graph.totalV() << endl;
-    cout << "Number of edges: " << graph.totalE() << endl;
+//     cout << "Number of vertices: " << graph.totalV() << endl;
+//     cout << "Number of edges: " << graph.totalE() << endl;
 
-    graph.print();
+//     graph.print();
 
-    return 0;
-}
+//     return 0;
+// }
