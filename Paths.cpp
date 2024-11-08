@@ -11,7 +11,10 @@ Paths::Paths(Graph* G, int s) {
     this->s = s;
     marked.resize(G->vertices(), false);
     edgeTo.resize(G->vertices());
-    dfs(*G, s);
+    //dfs(*G, s);
+    vertices.push(s);
+    marked[s] = true;
+    bfs(*G, s);
 }
 
 void Paths::dfs(Graph& G, int v) {
@@ -22,6 +25,18 @@ void Paths::dfs(Graph& G, int v) {
             dfs(G, w);
         }
     }
+}
+
+void Paths::bfs(Graph& G, int v) {
+    if (vertices.empty()) return;
+    vertices.pop();
+    for (int w : G.adj[v])
+        if (!marked[w]) {
+            edgeTo[w] = v;
+            vertices.push(w);
+            marked[w] = true;
+        }
+    bfs(G, vertices.front());
 }
 
 bool Paths::hasPathTo(int v) { return marked.at(v); }
