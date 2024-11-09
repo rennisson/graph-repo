@@ -38,28 +38,24 @@ void Graph::setE(int e) { this->E = e; }
 int Graph::vertices() { return V; }
 int Graph::edges() { return E; }
 
-void Graph::print()
-    {
-        cout << "Adjacency list for the Graph: " << endl;
-        // Iterate over each vertex
-        for (auto i : adj) {
-            // Print the vertex
-            cout << i.first << ": ";
-            // Iterate over the connected vertices
-            for (auto j : i.second)
-                cout << j << " ";  // Print the connected vertex
-            cout << endl;
-        }
+void Graph::print() {
+    // Iterate over each vertex
+    for (auto i : adj) {
+        cout << i.first << ": ";  // Print the vertex
+        for (auto j : i.second)  // Iterate over the connected vertices
+            cout << j << " ";  // Print the connected vertex
+        cout << endl;
     }
+}
 
-// int main() {
-//     string filename = "tinyCG.txt";
-//     Graph graph(filename);
+int main() {
+    string filename = "tinyG.txt";
+    Graph graph(filename);
 
-//     cout << "Number of vertices: " << graph.totalV() << endl;
-//     cout << "Number of edges: " << graph.totalE() << endl;
+    cout << graph.vertices() <<  " vertices, ";
+    cout << graph.edges() << " edges" << endl;
 
-//     graph.print();
+    graph.print();
 
-//     return 0;
-// }
+    return 0;
+}
