@@ -7,7 +7,7 @@
 class GraphProperties {
     private:
         Graph* G;
-        int diameter, radius, center, source, count;
+        int diameter, radius, center, source;
         vector<bool> marked;
         vector<int> edgeTo;
         vector<int> distTo;
@@ -15,8 +15,6 @@ class GraphProperties {
         void bfs(Graph& G, int v);
     public:
         GraphProperties(Graph* G);
-        bool hasPathTo(int v);
-        vector<int> pathTo(int v);
         int d();
         int r();
         int c();
