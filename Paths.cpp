@@ -51,17 +51,17 @@ vector<int> Paths::pathTo(int v) {
     return pathTo;
 }
 
-int main() {
-    string filename = "tinyCG.txt";
-    Graph graph(filename);
-    int source = 0;
-    Paths search(&graph, source);
-    for (int v = 0; v < graph.vertices(); v++) {
-        cout << source << " to " << v << ": ";
-        if (search.hasPathTo(v))
-            for (int x : search.pathTo(v))
-                if (x == source) cout << x;
-                else cout << "-" << x;
-            cout << "\n";
-    }
-}
+// int main() {
+//     string filename = "tinyCG.txt";
+//     Graph graph(filename);
+//     int source = 0;
+//     Paths search(&graph, source);
+//     for (int v = 0; v < graph.vertices(); v++) {
+//         cout << source << " to " << v << ": ";
+//         if (search.hasPathTo(v))
+//             for (int x : search.pathTo(v))
+//                 if (x == source) cout << x;
+//                 else cout << "-" << x;
+//             cout << "\n";
+//     }
+// }

@@ -25,21 +25,21 @@ int ConnectedComponents::count() { return c; }
 
 int ConnectedComponents::getId(int v) { return id[v]; }
 
-int main() {
-    string filename = "tinyG.txt";
-    Graph G(filename);
-    ConnectedComponents cc(&G);
-    int M = cc.count();
-    cout << M << " components" << endl;
-    map<int, vector<int>> components;
-    for (int v = 0; v < G.vertices(); v++)
-        components[cc.getId(v)].push_back(v);
+// int main() {
+//     string filename = "tinyG.txt";
+//     Graph G(filename);
+//     ConnectedComponents cc(&G);
+//     int M = cc.count();
+//     cout << M << " components" << endl;
+//     map<int, vector<int>> components;
+//     for (int v = 0; v < G.vertices(); v++)
+//         components[cc.getId(v)].push_back(v);
 
-    for (auto v : components) {
-        cout << v.first << ": ";
-        for (auto i : v.second)
-            cout << i << " ";
-        cout << endl;
-    }
+//     for (auto v : components) {
+//         cout << v.first << ": ";
+//         for (auto i : v.second)
+//             cout << i << " ";
+//         cout << endl;
+//     }
         
-}
+// }

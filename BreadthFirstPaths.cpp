@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <bits/stdc++.h>
+#include<limits>
 using namespace std;
 
 BreadthFirstPaths::BreadthFirstPaths(Graph* G, int s) {
@@ -10,6 +11,7 @@ BreadthFirstPaths::BreadthFirstPaths(Graph* G, int s) {
     this->s = s;
     marked.resize(G->vertices(), false);
     edgeTo.resize(G->vertices());
+    distTo.resize(G->vertices(), 0);
     vertices.push(s);
     marked[s] = true;
     bfs(*G, s);
@@ -18,16 +20,21 @@ BreadthFirstPaths::BreadthFirstPaths(Graph* G, int s) {
 void BreadthFirstPaths::bfs(Graph& G, int v) {
     if (vertices.empty()) return;
     vertices.pop();
+    count++;
     for (int w : G.adj[v])
         if (!marked[w]) {
             edgeTo[w] = v;
             vertices.push(w);
             marked[w] = true;
+            distTo[w] = distTo[v] + 1;
         }
+        
     bfs(G, vertices.front());
 }
 
 bool BreadthFirstPaths::hasPathTo(int v) { return marked.at(v); }
+
+int BreadthFirstPaths::distanceTo(int v) { return distTo[v]; }
 
 vector<int> BreadthFirstPaths::pathTo(int v) {
     if (!hasPathTo(v)) return {};
@@ -40,7 +47,7 @@ vector<int> BreadthFirstPaths::pathTo(int v) {
 }
 
 int main() {
-    string filename = "tinyCG.txt";
+    string filename = "tinyG-ec.txt";
     Graph graph(filename);
     int source = 0;
     BreadthFirstPaths search(&graph, source);
@@ -51,5 +58,11 @@ int main() {
                 if (x == source) cout << x;
                 else cout << "-" << x;
             cout << "\n";
+    }
+
+    for (int v = 0; v < graph.vertices(); v++) {
+        if (search.hasPathTo(v))
+            cout << "Distance from " << source << " to " << v << ": " << search.distanceTo(v);
+        cout << "\n";
     }
 }

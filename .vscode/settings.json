@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "map": "cpp",
+        "list": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "limits": "cpp"
+    }
+}

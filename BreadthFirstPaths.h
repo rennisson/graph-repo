@@ -9,6 +9,7 @@ class BreadthFirstPaths {
         Graph* G;
         vector<bool>marked;
         vector<int> edgeTo;
+        vector<int> distTo;
         queue<int> vertices;
         int count;
         int s;
@@ -17,6 +18,7 @@ class BreadthFirstPaths {
     public:
         BreadthFirstPaths(Graph* G, int s);
         bool hasPathTo(int v);
+        int distanceTo(int v);
         vector<int> pathTo(int v);
 };     
 

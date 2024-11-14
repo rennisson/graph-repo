@@ -48,14 +48,14 @@ void Graph::print() {
     }
 }
 
-int main() {
-    string filename = "tinyG.txt";
-    Graph graph(filename);
+// int main() {
+//     string filename = "tinyG.txt";
+//     Graph graph(filename);
 
-    cout << graph.vertices() <<  " vertices, ";
-    cout << graph.edges() << " edges" << endl;
+//     cout << graph.vertices() <<  " vertices, ";
+//     cout << graph.edges() << " edges" << endl;
 
-    graph.print();
+//     graph.print();
 
-    return 0;
-}
+//     return 0;
+// }
