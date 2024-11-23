@@ -1,11 +1,12 @@
 #include "Cycle.h"
 #include <iostream>
+#include <fstream>
+#include <stdio.h>  
 using namespace std;
 
 Cycle::Cycle(Graph* G) {
     this->G = G;
     cycle = false;
-    eulerianCycle = false;
     marked.resize(G->vertices(), false);
     for (int s = 0; s < G->vertices(); s++)
         if (!marked[s]) dfs(*G, s, s);
@@ -22,33 +23,41 @@ void Cycle::dfs(Graph& G, int v, int u) {
         else if (w != u || w == v) cycle = true;
 }
 
-bool Cycle::hasCycle() { return cycle; }
+void Cycle::findEulerCycle() {
+    // THIS DOES NOT FIND ANY EULER CYCLE
+    dfsEulerian(*G, 0, 0);
 
-bool Cycle::hasEulerCycle() {
-    //marked.resize(G->vertices(), false);
-    for (auto v : edgesVisited)
-        v.second.resize(G->vertices(), false);
-
-    for (int s = 0; s < G->vertices(); s++)
-        if (!marked[s]) dfs(*G, s, s);
-    return eulerianCycle;
+    for (int i : eulerianCycle)
+        cout << i << " ";
+    cout << endl;
 }
 
 void Cycle::dfsEulerian(Graph& G, int v, int s) {
-    for (int w : G.adj[v])
-        if (w == s) eulerianCycle = true;
-        else if (!edgesVisited[v].at(w))  {
-            edgesVisited[v].at(w) = true;
-            edgesVisited[w].at(v) = true;
-            dfs(G, w, s);
-        }
+    eulerianCycle.push_back(v);
+
+    while (!G.adj[v].empty()) {
+        int w = G.adj[v].front();
+        G.adj[v].remove(w);
+        G.adj[w].remove(v);
+        numberEdges--;
+        dfsEulerian(G, w, s);
+    }
+}
+
+bool Cycle::hasCycle() { return cycle; }
+
+bool Cycle::hasEulerCycle() {
+    // THIS WORKS PERFECTLY WELL
+    for (int degree : G->degrees)
+        if (degree % 2 != 0) return false;
+    
+    return true;
 }
 
 int main() {
-    string filename = "tiny-euler.txt";
+    string filename = "tiny-euler2.txt";
     Graph graph(filename);
     Cycle cycle(&graph);
 
-    if (cycle.hasEulerCycle()) cout << "Euler cycle found" << endl;
-    else cout << "Loop free" << endl;
+    cycle.findEulerCycle();
 }

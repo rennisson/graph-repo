@@ -8,14 +8,16 @@ class Cycle {
     private:
         Graph* G;
         vector<bool> marked;
-        map<int, vector<bool>> edgesVisited;
+        map<int, list<int>> edges;
+        int numberEdges;
         bool cycle;
-        bool eulerianCycle;
+        vector<int> eulerianCycle;
         void dfs(Graph& G, int v, int u);
         void dfsEulerian(Graph&, int v, int s);
 
     public:
         Cycle(Graph* G);
+        void findEulerCycle();
         bool hasCycle();
         bool hasEulerCycle();
 };

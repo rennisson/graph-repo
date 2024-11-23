@@ -16,6 +16,7 @@ Graph::Graph(string& filename) {
         return;
     }
 
+    degrees.resize(vertices(), 0);
     int V, E;
     inFile >> V >> E;
     this->V = V;
@@ -59,13 +60,12 @@ void Graph::print() {
 void Graph::showDegrees() {
     cout << "Vertices degrees" << endl;
     // Iterate over each vertex
-    for (auto i : degrees) {
-        cout << i.first << ": " << i.second << endl;  // Print the vertex and its degree
-    }
+    for (int i = 0; i < vertices(); i++)
+        cout << i << ": " << degrees[i] << endl;  // Print the vertex and its degree
 }
 
 // int main() {
-//     string filename = "tinyG.txt";
+//     string filename = "tiny-euler.txt";
 //     Graph graph(filename);
 
 //     cout << graph.vertices() <<  " vertices, ";
