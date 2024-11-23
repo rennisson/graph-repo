@@ -13,6 +13,7 @@ class Graph {
         map<int, list<int>> adj;  // adjacency lists
         Graph(int V);
         Graph(string& filename);
+        bool hasEdge(int v, int u);
         int vertices();  // return number of vertices
         int edges();  // return number of edges
         void setV(int v);

@@ -28,6 +28,12 @@ Graph::Graph(string& filename) {
     }
 }
 
+bool Graph::hasEdge(int v, int u) {
+    for (int s : adj[v]) 
+        if (s == u) return true;
+    return false;
+}
+
 void Graph::addEdge(int v, int w) {
     adj[v].push_back(w);
     adj[w].push_back(v);
@@ -48,14 +54,14 @@ void Graph::print() {
     }
 }
 
-// int main() {
-//     string filename = "tinyG.txt";
-//     Graph graph(filename);
+int main() {
+    string filename = "tinyG.txt";
+    Graph graph(filename);
 
-//     cout << graph.vertices() <<  " vertices, ";
-//     cout << graph.edges() << " edges" << endl;
+    cout << graph.vertices() <<  " vertices, ";
+    cout << graph.edges() << " edges" << endl;
 
-//     graph.print();
+    graph.print();
 
-//     return 0;
-// }
+    return 0;
+}
