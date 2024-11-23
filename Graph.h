@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 #include <list>
+#include<vector>
 #include <map>
 #include <string>
 using namespace std;
@@ -13,7 +14,7 @@ class Graph {
         Graph(int V);
         Graph(string& filename);
         map<int, list<int>> adj;  // adjacency lists
-        map<int, int> degrees;
+        vector<int> degrees;
         bool hasEdge(int v, int u);
         int vertices();  // return number of vertices
         int edges();  // return number of edges

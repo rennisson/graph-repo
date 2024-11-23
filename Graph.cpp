@@ -64,15 +64,15 @@ void Graph::showDegrees() {
     }
 }
 
-int main() {
-    string filename = "tinyG.txt";
-    Graph graph(filename);
+// int main() {
+//     string filename = "tinyG.txt";
+//     Graph graph(filename);
 
-    cout << graph.vertices() <<  " vertices, ";
-    cout << graph.edges() << " edges" << endl;
+//     cout << graph.vertices() <<  " vertices, ";
+//     cout << graph.edges() << " edges" << endl;
 
-    graph.print();
-    graph.showDegrees();
+//     graph.print();
+//     graph.showDegrees();
 
-    return 0;
-}
+//     return 0;
+// }
