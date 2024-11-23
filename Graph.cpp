@@ -36,7 +36,9 @@ bool Graph::hasEdge(int v, int u) {
 
 void Graph::addEdge(int v, int w) {
     adj[v].push_back(w);
+    degrees[v]++;
     adj[w].push_back(v);
+    degrees[w]++;
 }
 
 void Graph::setV(int v) { this->V = v; }
@@ -54,6 +56,14 @@ void Graph::print() {
     }
 }
 
+void Graph::showDegrees() {
+    cout << "Vertices degrees" << endl;
+    // Iterate over each vertex
+    for (auto i : degrees) {
+        cout << i.first << ": " << i.second << endl;  // Print the vertex and its degree
+    }
+}
+
 int main() {
     string filename = "tinyG.txt";
     Graph graph(filename);
@@ -62,6 +72,7 @@ int main() {
     cout << graph.edges() << " edges" << endl;
 
     graph.print();
+    graph.showDegrees();
 
     return 0;
 }

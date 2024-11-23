@@ -10,9 +10,10 @@ class Graph {
         int V, E;  // number of vertices and edges
 
     public:
-        map<int, list<int>> adj;  // adjacency lists
         Graph(int V);
         Graph(string& filename);
+        map<int, list<int>> adj;  // adjacency lists
+        map<int, int> degrees;
         bool hasEdge(int v, int u);
         int vertices();  // return number of vertices
         int edges();  // return number of edges
@@ -20,6 +21,7 @@ class Graph {
         void setE(int e);
         void addEdge(int v, int w);  // add edge
         void print();
+        void showDegrees();
 };
 
 #endif
